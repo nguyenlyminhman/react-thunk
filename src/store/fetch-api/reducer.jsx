@@ -12,7 +12,7 @@ export const fetchAllNeko = (state = initialState, action) => {
             return {
                 isLoading: true,
                 error: null,
-                data: null,
+                data: [],
             }
         case FETCH_DATA_SUCCESS:
             return {

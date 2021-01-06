@@ -1,14 +1,12 @@
-import {createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
-import logger from  'redux-logger';
+import logger from 'redux-logger';
 
-import {fetchAllNeko} from './fetch-api/reducer'
 
-const AllReducers  = combineReducers({
-    fetchAllNeko
+import { fetchAllNeko } from './fetch-api/reducer'
+
+const AllReducers = combineReducers({
+    dataNeko: fetchAllNeko
 })
 
-export const store = createStore(
-    AllReducers,
-    applyMiddleware(thunk, logger)
-)
+export const store = createStore(AllReducers, applyMiddleware(thunk))

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '@material-ui/core/Button';
 import StickyHeadTable from './data-items';
 import fetchData from '../../store/fetch-api/action';
 import { connect } from 'react-redux';
 
-function NekoFetch(props) {
-
+const NekoFetch = (props) => {
 
     const _fetchNekoData = () => {
         props.fetchData()
@@ -14,19 +13,18 @@ function NekoFetch(props) {
     return (
         <>
             <Button variant="contained" color="primary" onClick={_fetchNekoData}>
-                Fetch Neko Data
+                Fetch Neko Data {props.loading}
             </Button>
-            <StickyHeadTable />
         </>
     );
 }
 
 const mapState = state => ({
-    // isLoading: setIsLoading
-}) 
-
-const mapDistpatch = dispatch => ({
-    fetchData : () => dispatch(fetchData())
+    loading: state.dataNeko.isLoading
 })
 
-export default connect(mapState,mapDistpatch )(NekoFetch);
+const mapDistpatch = dispatch => ({
+    fetchData: () => dispatch(fetchData())
+})
+
+export default connect(mapState, mapDistpatch)(NekoFetch);
